@@ -16,9 +16,6 @@ export function useBeques() {
     }
   };
 
-     // Imprimir los datos en la consola para verificar si se cargaron correctamente
-     console.log('Datos cargados:', data.value);
-
   onMounted(fetchBeques);
 
   // Extraer años únicos y ordenarlos
@@ -28,12 +25,17 @@ export function useBeques() {
 
   // Función para obtener los centros por año
   const getCentrosByYear = (year) => {
-    return computed(() => {
-      return [...new Set(data.value
-        .filter(item => item.any_convocatoria === year)
-        .map(item => item.nom_ens))].sort();
-    });
+    return [...new Set(data.value
+      .filter(item => item.any_convocatoria === year)
+      .map(item => item.nom_ens))].sort();
   };
 
-  return { data, anys, getCentrosByYear };
+  // Función para obtener los detalles de las becas (Falta esta función en tu código)
+  const getBequesDetail = (year, centre) => {
+    return data.value.filter(item =>
+      item.any_convocatoria === year && item.nom_ens === centre
+    );
+  };
+
+  return { data, anys, getCentrosByYear, getBequesDetail };
 }

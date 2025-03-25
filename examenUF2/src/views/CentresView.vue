@@ -11,7 +11,7 @@
   
   <script setup>
   import { useRoute } from 'vue-router';
-  import { useBeques } from '../composables/useBeques.js';
+  import { useBeques } from '../composable/useBeques.js';
   
   const route = useRoute();
   const year = route.params.year;
