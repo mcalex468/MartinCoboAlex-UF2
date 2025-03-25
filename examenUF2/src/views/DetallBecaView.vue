@@ -11,6 +11,7 @@
       </li>
     </ul>
   </div>
+  <button @click="$router.push('/beques')">Enrere</button>
 </template>
 
 <script setup>
@@ -18,8 +19,8 @@ import { useRoute } from 'vue-router';
 import { useBeques } from '../composable/useBeques.js';
 
 const route = useRoute();
-const year = route.params.any;
+const any = route.params.any;
 const centre = route.params.detall;  
 
-const bequesDetail = useBeques().getBequesDetail(year, centre);
+const bequesDetail = useBeques().getBequesDetail(any, centre);
 </script>
