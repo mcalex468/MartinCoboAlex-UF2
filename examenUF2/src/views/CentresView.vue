@@ -11,7 +11,7 @@
 </template>
 
 <script setup>
-import { onMounted} from 'vue';
+import { onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import { useBeques } from '../composable/useBeques.js';
 
