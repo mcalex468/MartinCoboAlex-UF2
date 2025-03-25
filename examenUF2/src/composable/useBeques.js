@@ -1,4 +1,4 @@
-import { ref, onMounted } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 import axios from 'axios';
 
 const API_URL = 'https://analisi.transparenciacatalunya.cat/resource/rsgi-8ymj.json';
@@ -6,17 +6,34 @@ const API_URL = 'https://analisi.transparenciacatalunya.cat/resource/rsgi-8ymj.j
 export function useBeques() {
   const data = ref([]);
 
+  // Función para cargar los datos desde la API
   const fetchBeques = async () => {
     try {
       const response = await axios.get(API_URL);
       data.value = response.data;
     } catch (err) {
-     console.log('Error cargando datos');
+      console.error('Error cargando datos:', err);
     }
   };
 
+     // Imprimir los datos en la consola para verificar si se cargaron correctamente
+     console.log('Datos cargados:', data.value);
+
   onMounted(fetchBeques);
 
-  return { data };
-}
+  // Extraer años únicos y ordenarlos
+  const anys = computed(() =>
+    [...new Set(data.value.map(item => item.any_convocatoria))].sort((a, b) => b - a)
+  );
 
+  // Función para obtener los centros por año
+  const getCentrosByYear = (year) => {
+    return computed(() => {
+      return [...new Set(data.value
+        .filter(item => item.any_convocatoria === year)
+        .map(item => item.nom_ens))].sort();
+    });
+  };
+
+  return { data, anys, getCentrosByYear };
+}

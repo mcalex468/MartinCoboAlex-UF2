@@ -18,14 +18,11 @@ import Navigation from './components/navigation.vue';
 body {
   font-family: 'Arial', sans-serif;
   background-color: #f4f4f4;
-  margin: 0;
-  padding: 0;
 }
 
 #app {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
 }
 
 main {

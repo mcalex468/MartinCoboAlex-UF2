@@ -10,16 +10,8 @@
   </template>
   
   <script setup>
-  import { computed } from '@/vue';
-  import { useBeques } from '@/compsables/useBeques.js';
-  import { routerLink } from '@/vue'
-  const { data } = useBeques();
+  import { useBeques } from '../composables/useBeques.js';
   
-  console.log("DADES");
-  console.log(data);
-
-  const anys = computed(() =>
-    [...new Set(data.value.map(item => item.any_convocatoria))].sort((a, b) => b - a)
-  );
+  const { anys } = useBeques();
   </script>
   
