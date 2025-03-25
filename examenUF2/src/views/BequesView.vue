@@ -1,21 +1,19 @@
 <template>
   <div>
-    <h1>Anys Beques</h1>
+    <h1>Anys</h1>
     <ul>
       <li v-for="any in anys" :key="any">
-        <router-link :to="`/beques/${any}`" class="any">{{ any }}</router-link>
+        <router-link :to="`/anys/${any}/centres`">{{ any }}</router-link>
       </li>
     </ul>
   </div>
 </template>
 
 <script setup>
-import { useBeques } from '../composable/useBeques.js';
+import { onMounted } from 'vue';
+import { useBeques } from '../composable/useBeques';
 
-const { anys } = useBeques();
+const { anys, fectBeques } = useBeques();
+
+onMounted(fectBeques); 
 </script>
-<style scoped>
-.any{
-  background-color: bisque;
-}
-</style>

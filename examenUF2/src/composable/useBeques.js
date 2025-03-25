@@ -1,12 +1,14 @@
-import { ref, computed, onMounted } from 'vue';
+import { ref } from 'vue';
 import axios from 'axios';
 
 const API_URL = 'https://analisi.transparenciacatalunya.cat/resource/rsgi-8ymj.json';
 
 export function useBeques() {
-  const data = ref([]);
+  const dades = ref([]);
+  const anys = ref([]);
+  const centres = ref([]);
+  const dadesCentre = ref([]);
 
-  // Función para cargar los datos desde la API
   const fetchBeques = async () => {
     try {
       const response = await axios.get(API_URL);
@@ -16,26 +18,13 @@ export function useBeques() {
     }
   };
 
-  onMounted(fetchBeques);
-
-  // Extraer años únicos y ordenarlos
-  const anys = computed(() =>
-    [...new Set(data.value.map(item => item.any_convocatoria))].sort((a, b) => b - a)
-  );
-
-  // Función para obtener los centros por año
-  const getCentrosByYear = (year) => {
-    return [...new Set(data.value
-      .filter(item => item.any_convocatoria === year)
-      .map(item => item.nom_ens))].sort();
+  const fetchCentres = (any) => {
+    centres.value = [...new Set(dades.value.filter(datos => datos.any === any).map(datos => datos.tipus_de_centres))];
   };
 
-  // Función para obtener los detalles de las becas
-  const getBequesDetail = (year, centre) => {
-    return data.value.filter(item =>
-      item.any_convocatoria === year && item.nom_ens === centre
-    );
+  const fetchDetallCentre = (any, centre) => {
+    dadesCentre.value = dades.value.filter(datos => datos.any === any && datos.tipus_de_centres === centre);
   };
 
-  return { data, anys, getCentrosByYear, getBequesDetail };
+  return { dades, anys, centres, dadesCentre, fetchBeques, fetchCentres, fetchDetallCentre };
 }

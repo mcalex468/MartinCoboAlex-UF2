@@ -2,7 +2,7 @@
     <nav>
       <h3>Examen M14 UF2</h3>
       <router-link to="/">Home</router-link>
-      <router-link to="/beques">Beques</router-link>
+      <router-link to="/anys">Beques</router-link>
     </nav>
   </template>
   <script setup>

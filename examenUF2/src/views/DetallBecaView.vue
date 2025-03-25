@@ -18,7 +18,7 @@ import { useRoute } from 'vue-router';
 import { useBeques } from '../composable/useBeques.js';
 
 const route = useRoute();
-const year = route.params.any;
+const year = route.params.any.value;
 const centre = route.params.detall;  
 
 const bequesDetail = useBeques().getBequesDetail(year, centre);

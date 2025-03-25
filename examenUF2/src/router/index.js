@@ -1,13 +1,19 @@
 import { createRouter, createWebHistory } from 'vue-router';
+import HomeView from '../views/HomeView.vue';
+import Anys from '../views/BequesView.vue';
+import Centres from '../views/CentresView.vue';
+import Detall from '../views/DetallBecaView.vue';
+
+const routes = [
+  { path: '/', component: HomeView },
+  { path: '/anys', component: Anys },
+  { path: '/anys/:any/centres', component: Centres, props: true },
+  { path: '/anys/:any/centres/:centre', component: Detall, props: true }
+];
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [
-    { path: '/', name: 'home', component: () => import('../views/HomeView.vue') },
-    { path: '/beques', name: 'beques', component: () => import('../views/BequesView.vue'), props: true },
-    { path: '/beques/:any', name: 'centres', component: () => import('../views/CentresView.vue'), props: true },
-    { path: '/beques/:any/:detall', name: 'detall-beca', component: () => import('../views/DetallBecaView.vue'), props: true }
-  ],
+  history: createWebHistory(),
+  routes
 });
 
 export default router;
