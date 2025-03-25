@@ -15,7 +15,7 @@ import { onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import { useBeques } from '../composable/useBeques.js';
 
-const { dades, centres, fecthBeques, fetchCentres } = useBeques();
+const { dades, centres, fetchBeques, fetchCentres } = useBeques();
 const route = useRoute();
 const any = route.params.any;
 

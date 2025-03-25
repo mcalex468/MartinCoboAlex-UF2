@@ -20,7 +20,7 @@ import { useBeques } from '../composable/useBeques.js';
 
 const route = useRoute();
 const any = route.params.any;
-const centre = route.params.detall;  
+const centre = route.params.detall;
 
 const bequesDetail = useBeques().getBequesDetail(any, centre);
 </script>

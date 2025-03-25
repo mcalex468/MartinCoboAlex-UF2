@@ -10,7 +10,8 @@ export function useBeques() {
   const fetchBeques = async () => {
     try {
       const response = await axios.get('https://analisi.transparenciacatalunya.cat/resource/rsgi-8ymj.json');
-      data.value = response.data;
+      dades.value = response.data;
+      anys.value = [...new Set(dades.value.map(item => item.any))].sort((a, b) => b - a);
     } catch (err) {
       console.error('Error cargando datos:', err);
     }
@@ -26,3 +27,4 @@ export function useBeques() {
 
   return { dades, anys, centres, dadesCentre, fetchBeques, fetchCentres, fetchDetallCentre };
 }
+

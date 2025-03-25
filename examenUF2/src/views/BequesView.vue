@@ -13,7 +13,7 @@
 import { onMounted } from 'vue';
 import { useBeques } from '../composable/useBeques';
 
-const { anys, fecthBeques } = useBeques();
+const { anys, fetchBeques } = useBeques();
 
-onMounted(fecthBeques); 
+onMounted(fetchBeques); 
 </script>
