@@ -30,7 +30,7 @@ export function useBeques() {
       .map(item => item.nom_ens))].sort();
   };
 
-  // Función para obtener los detalles de las becas (Falta esta función en tu código)
+  // Función para obtener los detalles de las becas
   const getBequesDetail = (year, centre) => {
     return data.value.filter(item =>
       item.any_convocatoria === year && item.nom_ens === centre

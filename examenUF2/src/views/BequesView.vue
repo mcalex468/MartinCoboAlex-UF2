@@ -3,7 +3,7 @@
     <h1>Anys Beques</h1>
     <ul>
       <li v-for="any in anys" :key="any">
-        <router-link :to="`/beques/${any}`" class="any" >{{ any }}</router-link>
+        <router-link :to="`/beques/${any}`" class="any">{{ any }}</router-link>
       </li>
     </ul>
   </div>
