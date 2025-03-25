@@ -6,9 +6,9 @@ import Detall from '../views/DetallBecaView.vue';
 
 const routes = [
   { path: '/', component: HomeView },
-  { path: '/anys', component: Anys },
-  { path: '/anys/:any/centres', component: Centres, props: true },
-  { path: '/anys/:any/centres/:centre', component: Detall, props: true }
+  { path: '/beques', component: Anys },
+  { path: '/beques/:any/centres', component: Centres, props: true },
+  { path: '/beques/any/centres/:centre', component: Detall, props: true }
 ];
 
 const router = createRouter({

@@ -3,11 +3,11 @@
     <h1>Centres per a l'any {{ any }}</h1>
     <ul>
       <li v-for="centre in centres" :key="centre">
-        <router-link :to="`/anys/${any}/centres/${centre}`">{{ centre }}</router-link>
+        <router-link :to="`/beques/${any}/centres/${centre}`">{{ centre }}</router-link>
       </li>
     </ul>
   </div>
-  <button @click="$router.push('/anys')">Tornar</button>
+  <button @click="$router.push('/beques')">Tornar</button>
 </template>
 
 <script setup>

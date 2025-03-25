@@ -1,8 +1,6 @@
 import { ref } from 'vue';
 import axios from 'axios';
 
-const API_URL = 'https://analisi.transparenciacatalunya.cat/resource/rsgi-8ymj.json';
-
 export function useBeques() {
   const dades = ref([]);
   const anys = ref([]);
@@ -11,7 +9,7 @@ export function useBeques() {
 
   const fetchBeques = async () => {
     try {
-      const response = await axios.get(API_URL);
+      const response = await axios.get('https://analisi.transparenciacatalunya.cat/resource/rsgi-8ymj.json');
       data.value = response.data;
     } catch (err) {
       console.error('Error cargando datos:', err);

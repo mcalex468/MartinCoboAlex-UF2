@@ -3,7 +3,7 @@
     <h1>Anys</h1>
     <ul>
       <li v-for="any in anys" :key="any">
-        <router-link :to="`/anys/${any}/centres`">{{ any }}</router-link>
+        <router-link :to="`/beques/${any}/centres`">{{ any }}</router-link>
       </li>
     </ul>
   </div>
@@ -13,7 +13,7 @@
 import { onMounted } from 'vue';
 import { useBeques } from '../composable/useBeques';
 
-const { anys, fectBeques } = useBeques();
+const { anys, fecthBeques } = useBeques();
 
-onMounted(fectBeques); 
+onMounted(fecthBeques); 
 </script>
